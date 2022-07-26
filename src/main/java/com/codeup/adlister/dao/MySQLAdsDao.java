@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.io.FileInputStream;
@@ -84,7 +85,11 @@ public class MySQLAdsDao implements Ads {
         List<Ad> ads = new ArrayList<>();
         while (rs.next()) {
             ads.add(extractAd(rs));
+           long userId = extractAd(rs).getUserId();
+            Users user = DaoFactory.getUsersDao();
+            String postUsername = user.findByUsernameId(userId).getUsername();
         }
+
         return ads;
     }
 }
