@@ -11,4 +11,9 @@ public interface Ads {
     Long insert(Ad ad);
 
     Ad singleAd(int adId);
+
+    List<Ad> allUserAds(long userId);
+
+    void delete(long delId);
+
 }
