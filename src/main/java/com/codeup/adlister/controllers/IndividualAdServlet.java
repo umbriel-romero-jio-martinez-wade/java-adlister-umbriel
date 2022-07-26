@@ -23,7 +23,9 @@ public class IndividualAdServlet extends HttpServlet {
         req.setAttribute("ad", DaoFactory.getAdsDao().singleAd(Integer.parseInt(adId)));
 
        Ad usernameId = (Ad)req.getAttribute("ad");
+//       gets users dao
        Users username = DaoFactory.getUsersDao();
+//       finds by users id that was retrieved from the adId
        req.setAttribute("username",username.findByUsernameId(usernameId.getUserId()));
 
 

@@ -1,6 +1,6 @@
 package com.codeup.adlister.controllers;
-
 import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.dao.Users;
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
 
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
@@ -22,6 +24,8 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirm_password");
 
+
+
         // validate input
         boolean inputHasErrors = username.isEmpty()
             || email.isEmpty()
@@ -33,9 +37,25 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
-        // create and save a new user
-        User user = new User(username, email, password);
-        DaoFactory.getUsersDao().insert(user);
-        response.sendRedirect("/login");
+
+           Users checkUsername = DaoFactory.getUsersDao();
+           User search = checkUsername.findByUsername(username);
+           if(search == null){
+               // create and save a new user
+               User user = new User(username, email, password);
+
+               DaoFactory.getUsersDao().insert(user);
+               request.getSession().setAttribute("user",user);
+
+               response.sendRedirect("/login");
+           } else {
+
+
+               response.sendRedirect("/register");
+
+           }
+
+
+
     }
 }
