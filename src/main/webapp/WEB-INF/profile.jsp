@@ -17,6 +17,7 @@
     <c:forEach var="ad" items="${profileAds}">
         <div class="col-md-6">
             <h4>Posted by:<c:out value="${username}"/></h4>
+            <a href="/register?updateUser=<c:out value="${user.id}"/>"><h2>edit UserProfile</h2></a>
             <a href="/ad?adId=<c:out value="${ad.id}"/>"><h2><c:out value="${ad.title}"/></h2></a>
             <p><c:out value="${ad.description}"/></p>
             <a href="/profile/ads/delete?delId=<c:out value="${ad.id}"/>"><p>delete</p></a>

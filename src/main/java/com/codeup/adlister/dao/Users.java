@@ -9,4 +9,6 @@ public interface Users {
     Long insert(User user);
 
     User findByUsernameId(long userId);
+
+    void updateUser(long updateId,String username,String email, String password);
 }
