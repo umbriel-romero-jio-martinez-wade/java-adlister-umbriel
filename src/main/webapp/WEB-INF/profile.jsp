@@ -20,6 +20,7 @@
             <a href="/ad?adId=<c:out value="${ad.id}"/>"><h2><c:out value="${ad.title}"/></h2></a>
             <p><c:out value="${ad.description}"/></p>
             <a href="/profile/ads/delete?delId=<c:out value="${ad.id}"/>"><p>delete</p></a>
+            <a href="/update?updateId=<c:out value="${ad.id}"/>"><p>update</p></a>
         </div>
     </c:forEach>
 
