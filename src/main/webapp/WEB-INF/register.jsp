@@ -29,5 +29,20 @@
             <input type="submit" class="btn btn-primary btn-block">
         </form>
     </div>
+    <script>
+        /* alert user if form is not filled out */
+        var form = document.getElementsByTagName('form')[0];
+        form.addEventListener('submit', function(e) {
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var confirm_password = document.getElementById('confirm_password').value;
+            if (username == '' || email == '' || password == '' || confirm_password == '') {
+                e.preventDefault();
+                alert('Please fill out all fields.');
+            }
+        });
+
+    </script>
 </body>
 </html>

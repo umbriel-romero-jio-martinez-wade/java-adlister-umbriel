@@ -22,5 +22,16 @@
         <input type="submit" class="btn btn-block btn-primary">
     </form>
 </div>
+<script>
+    var form = document.getElementsByTagName('form')[0];
+    form.addEventListener('submit', function(e) {
+        let title = document.getElementById('title').value;
+        var description = document.getElementById('description').value;
+        if (title == '' || description == '') {
+            e.preventDefault();
+            alert('Please fill out all fields.');
+        }
+    });
+</script>
 </body>
 </html>
