@@ -8,6 +8,7 @@ public interface Ads {
     // get a list of all the ads
     List<Ad> all();
     // insert a new ad and return the new ad's id
+    List<Ad>all(String sql,String search);
     Long insert(Ad ad);
 
     Ad singleAd(int adId);
@@ -17,5 +18,6 @@ public interface Ads {
     void delete(long delId);
 
     void update(long updateId,String title,String description);
+
 
 }
