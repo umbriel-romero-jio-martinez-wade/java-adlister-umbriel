@@ -10,7 +10,7 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
-        <h1>Welcome, ${sessionScope.user.username}!</h1>
+        <h1>Welcome, ${profileUsername}!</h1>
     </div>
     <h2>Here are your Ads !</h2>
     <a href="/userupdate?user=<c:out value="${user.id}"/>"><h2>edit UserProfile</h2></a>

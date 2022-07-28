@@ -34,15 +34,17 @@ public class UpdateUserServlet extends HttpServlet {
 
         long id = userId.getId();
         String username = req.getParameter("username");
-        System.out.println(username);
+
         String email = req.getParameter("email");
-        System.out.println(email);
         String password = req.getParameter("password");
-        System.out.println(password);
         Users user = DaoFactory.getUsersDao();
         user.updateUser(id, username, email, password);
+        req.getSession().setAttribute("profileUsername",user.findByUsername(username).getUsername());
 
-        req.getSession().invalidate();
+
+
+
+//        req.getSession().invalidate();
         resp.sendRedirect("/login");
 
     }

@@ -46,6 +46,7 @@ public class RegisterServlet extends HttpServlet {
 
                DaoFactory.getUsersDao().insert(user);
                request.getSession().setAttribute("user",user);
+               request.getSession().setAttribute("profileUsername",DaoFactory.getUsersDao().findByUsername(username).getUsername());
 
                response.sendRedirect("/login");
            } else {
