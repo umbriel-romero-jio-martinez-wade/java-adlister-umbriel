@@ -13,7 +13,7 @@
         <h1>Welcome, ${sessionScope.user.username}!</h1>
     </div>
     <h2>Here are your Ads !</h2>
-    <a href="/userupdate?user=<c:out value="${user.id}"/>"><h2>edit UserProfile</h2></a>
+
     <c:forEach var="ad" items="${profileAds}">
         <div class="col-md-6">
             <h4>Posted by:<c:out value="${username}"/></h4>
