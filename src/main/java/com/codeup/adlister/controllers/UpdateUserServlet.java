@@ -21,7 +21,7 @@ public class UpdateUserServlet extends HttpServlet {
             String update = req.getParameter("user");
             System.out.println("this is the username I get " + update);
             req.setAttribute("user", update);
-        req.getRequestDispatcher("/WEB-INF/userupdate.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/userupdate.jsp").forward(req, resp);
         } else {
             resp.sendRedirect("/login");
         }
@@ -30,7 +30,7 @@ public class UpdateUserServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().getAttribute("user");
-        User userId = (User)req.getSession().getAttribute("user");
+        User userId = (User) req.getSession().getAttribute("user");
 
         long id = userId.getId();
         String username = req.getParameter("username");
@@ -39,12 +39,8 @@ public class UpdateUserServlet extends HttpServlet {
         String password = req.getParameter("password");
         Users user = DaoFactory.getUsersDao();
         user.updateUser(id, username, email, password);
-        req.getSession().setAttribute("profileUsername",user.findByUsername(username).getUsername());
+        req.getSession().setAttribute("profileUsername", user.findByUsername(username).getUsername());
 
-
-
-
-//        req.getSession().invalidate();
         resp.sendRedirect("/login");
 
     }
