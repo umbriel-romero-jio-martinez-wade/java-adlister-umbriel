@@ -1,6 +1,7 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.dao.Users;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
 
@@ -23,8 +24,10 @@ public class LoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
+        System.out.println(username);
         String password = request.getParameter("password");
-        User user = DaoFactory.getUsersDao().findByUsername(username);
+        Users usersDao = DaoFactory.getUsersDao();
+        User user = usersDao.findByUsername(username);
 
         if (user == null) {
             response.sendRedirect("/login");
