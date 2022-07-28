@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Category;
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -31,5 +32,11 @@ public class CreateAdServlet extends HttpServlet {
         );
         DaoFactory.getAdsDao().insert(ad);
         response.sendRedirect("/ads");
+//Category category =new Category(
+//        ad.getId(),
+//   request.getParameterValues("category")
+//);
+
+
     }
 }

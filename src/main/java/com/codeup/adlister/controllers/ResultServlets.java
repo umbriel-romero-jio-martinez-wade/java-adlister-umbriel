@@ -15,6 +15,9 @@ import java.util.List;
 public class ResultServlets extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String sql = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?";
+
+        String joinSql ="SELECT name  FROM category LEFT JOIN title AS ti ON ads.id = ti.id ";
+
         String search = request.getParameter("search");
         String searchWithWildCards = "%" + search + "%";
         request.setAttribute("search", search);
