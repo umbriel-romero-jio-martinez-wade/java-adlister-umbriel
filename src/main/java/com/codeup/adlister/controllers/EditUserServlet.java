@@ -1,12 +1,10 @@
 package com.codeup.adlister.controllers;
 
 
-import com.codeup.adlister.dao.Ads;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.dao.Users;
 import com.codeup.adlister.models.User;
 
-import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "controllers.UpdateUserServlet", urlPatterns = "/userupdate")
-public class UpdateUserServlet extends HttpServlet {
+@WebServlet(name = "controllers.EditUserServlet", urlPatterns = "/userupdate")
+public class EditUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getSession().getAttribute("user") != null) {
             String update = req.getParameter("user");
