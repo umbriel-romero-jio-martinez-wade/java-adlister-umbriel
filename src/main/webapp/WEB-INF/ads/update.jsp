@@ -3,7 +3,7 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Update Ad" />
+        <jsp:param name="title" value="Update Ad"/>
     </jsp:include>
 </head>
 <body>
@@ -24,7 +24,7 @@
 </div>
 <script>
     var form = document.getElementsByTagName('form')[0];
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         let title = document.getElementById('title').value;
         var description = document.getElementById('description').value;
         if (title == '' || description == '') {

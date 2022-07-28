@@ -27,7 +27,8 @@ public class UpdateAdServlet extends HttpServlet {
         String updateId = req.getParameter("updateId");
         String title = req.getParameter("title");
         String description = req.getParameter("description");
-
+        String oldTitle = req.getParameter("title");
+        req.getSession().setAttribute("oldTitle",oldTitle);
         Ads ad = DaoFactory.getAdsDao();
         ad.update(Long.parseLong(updateId), title, description);
 
