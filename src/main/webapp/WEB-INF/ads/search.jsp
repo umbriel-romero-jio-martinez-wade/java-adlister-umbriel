@@ -12,11 +12,17 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/results" method="get">
+<form action="/results2" method="get">
   <label for="search"></label>
   <input type="text" name="search" id="search">
+
     <button type="submit">Submit</button>
 
+</form>
+<form action="/results" method="get">
+    <label for="cat-search">Search BY Category</label>
+    <input type="text"name="cat-search" id="cat-search" >
+    <button type="submit">Submit</button>
 </form>
 </body>
 </html>

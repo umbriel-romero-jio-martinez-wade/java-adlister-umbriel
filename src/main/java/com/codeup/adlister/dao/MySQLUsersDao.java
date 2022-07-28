@@ -45,6 +45,7 @@ public class MySQLUsersDao implements Users {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setLong(1, user_id);
             return extractUser(stmt.executeQuery());
+
         } catch (SQLException e) {
             throw new RuntimeException("Error finding a user by user_id", e);
         }
@@ -75,6 +76,7 @@ public class MySQLUsersDao implements Users {
             rs.getString("email"),
             rs.getString("password")
         );
+
     }
 
 }

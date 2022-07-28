@@ -14,15 +14,18 @@ import java.util.List;
 @WebServlet(name = "ResultsServlets", urlPatterns = "/results")
 public class ResultServlets extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String sql = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?";
+//        String sql = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?";
+//
+//        String joinSql ="SELECT ad_id,category_id, FROM category_and_ads WHERE category_id = ?";
 
-        String joinSql ="SELECT name  FROM category LEFT JOIN title AS ti ON ads.id = ti.id ";
-
-        String search = request.getParameter("search");
+        String search = request.getParameter("cat-search");
         String searchWithWildCards = "%" + search + "%";
         request.setAttribute("search", search);
 
-        List<Ad> ads = DaoFactory.getAdsDao().all(sql, searchWithWildCards);
+        List<Ad> ads = DaoFactory.getsCategoriesDao().getAdsWithCategory(
+                Long.parseLong(search)
+        );
+        System.out.println(ads.size());
         request.setAttribute("ads", ads);
         System.out.println(search);
 
