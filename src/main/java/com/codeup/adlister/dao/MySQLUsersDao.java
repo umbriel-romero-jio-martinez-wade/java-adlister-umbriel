@@ -6,6 +6,8 @@ import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
 
+import static com.codeup.adlister.util.Password.hash;
+
 public class MySQLUsersDao implements Users {
     private Connection connection;
 
