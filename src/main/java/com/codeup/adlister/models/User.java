@@ -23,6 +23,9 @@ public class User {
         this.password = password;
     }
 
+    public static void updateUser(long parseLong, String username, String email, String password) {
+    }
+
     public long getId() {
         return id;
     }

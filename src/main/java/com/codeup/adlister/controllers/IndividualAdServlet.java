@@ -28,7 +28,6 @@ public class IndividualAdServlet extends HttpServlet {
 //       finds by users id that was retrieved from the adId
        req.setAttribute("username",username.findByUsernameId(usernameId.getUserId()));
 
-
         req.getRequestDispatcher("/WEB-INF/ads/ad.jsp").forward(req,resp);
     }
 

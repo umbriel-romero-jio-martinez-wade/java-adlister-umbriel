@@ -10,5 +10,5 @@ public interface Users {
 
     User findByUsernameId(long userId);
 
-    void updateUser(long updateId,String username,String email, String password);
+    void updateUser(long id, String username, String email, String password);
 }
