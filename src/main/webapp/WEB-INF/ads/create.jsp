@@ -20,5 +20,17 @@
             <input type="submit" class="btn btn-block btn-primary">
         </form>
     </div>
+    <script>
+        /* alert user if the form is not filled out */
+        var form = document.getElementsByTagName('form')[0];
+        form.addEventListener('submit', function(e) {
+            var title = document.getElementById('title').value;
+            var description = document.getElementById('description').value;
+            if (title == '' || description == '') {
+                e.preventDefault();
+                alert('Please fill out all fields.');
+            }
+        });
+    </script>
 </body>
 </html>
