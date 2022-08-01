@@ -1,4 +1,5 @@
 package com.codeup.adlister.controllers;
+
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.dao.Users;
 import com.codeup.adlister.models.User;
@@ -25,12 +26,11 @@ public class RegisterServlet extends HttpServlet {
         String passwordConfirmation = request.getParameter("confirm_password");
 
 
-
         // validate input
         boolean inputHasErrors = username.isEmpty()
-            || email.isEmpty()
-            || password.isEmpty()
-            || (! password.equals(passwordConfirmation));
+                || email.isEmpty()
+                || password.isEmpty()
+                || (!password.equals(passwordConfirmation));
 
         if (inputHasErrors) {
             response.sendRedirect("/register");
@@ -38,23 +38,26 @@ public class RegisterServlet extends HttpServlet {
         }
 
 
-           Users checkUsername = DaoFactory.getUsersDao();
-           User search = checkUsername.findByUsername(username);
-           if(search == null){
-               // create and save a new user
-               User user = new User(username, email, password);
+        Users checkUsername = DaoFactory.getUsersDao();
+        User search = checkUsername.findByUsername(username);
+        if (search == null) {
+            // create and save a new user
+            User user = new User(username, email, password);
 
-               DaoFactory.getUsersDao().insert(user);
-               request.getSession().setAttribute("user",user);
+            DaoFactory.getUsersDao().insert(user);
+            request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("profileUsername", DaoFactory.getUsersDao().findByUsername(username).getUsername());
 
-               response.sendRedirect("/login");
-           } else {
+            response.sendRedirect("/login");
+        } else {
+            request.getSession().setAttribute("username", username);
+            request.getSession().setAttribute("email", email);
+            request.getSession().setAttribute("password", password);
+            request.getSession().setAttribute("passwordConfirmation", passwordConfirmation);
 
+            response.sendRedirect("/register");
 
-               response.sendRedirect("/register");
-
-           }
-
+        }
 
 
     }

@@ -14,7 +14,7 @@
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
-            <h4>Posted by:<c:out value="${username.username}"/></h4>
+            <h4>Posted by user: <c:out value="${ad.userId}"/></h4>
             <a href="/ad?adId=<c:out value="${ad.id}"/>"><h2><c:out value="${ad.title}"/></h2></a>
             <p><c:out value="${ad.description}"/></p>
         </div>

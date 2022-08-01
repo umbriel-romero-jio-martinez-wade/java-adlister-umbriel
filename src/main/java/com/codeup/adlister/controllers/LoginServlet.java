@@ -38,6 +38,8 @@ public class LoginServlet extends HttpServlet {
 
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("profileUsername",DaoFactory.getUsersDao().findByUsername(username).getUsername());
+
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/login");

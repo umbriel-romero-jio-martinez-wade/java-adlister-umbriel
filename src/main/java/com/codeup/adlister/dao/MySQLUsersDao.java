@@ -6,6 +6,8 @@ import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
 
+import static com.codeup.adlister.util.Password.hash;
+
 public class MySQLUsersDao implements Users {
     private Connection connection;
 
@@ -66,6 +68,24 @@ public class MySQLUsersDao implements Users {
         } catch (SQLException e) {
             throw new RuntimeException("Error creating new user", e);
         }
+    }
+
+    public void updateUser(long id, String username, String email, String password) {
+        String sql = "UPDATE users SET username = ? , email = ? , password = ? WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            stmt.setString(1, username);
+            stmt.setString(2, email);
+            stmt.setString(3, hash(password));
+            stmt.setLong(4, id);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("cant update User", e);
+
+        }
+
     }
 
     private User extractUser(ResultSet rs) throws SQLException {
