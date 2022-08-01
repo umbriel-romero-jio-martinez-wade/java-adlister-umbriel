@@ -18,6 +18,7 @@ public interface Ads {
     void delete(long delId);
 
     void update(long updateId,String title,String description);
+    void deletes(long delId);
 
 
 }

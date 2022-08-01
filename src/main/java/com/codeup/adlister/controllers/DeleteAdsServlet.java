@@ -14,8 +14,9 @@ import java.io.IOException;
 public class DeleteAdsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       long delId = Integer.parseInt(req.getParameter("delId"));
+       long delId = Long.parseLong(req.getParameter("delId"));
        Ads ad = DaoFactory.getAdsDao();
+        ad.deletes(delId);
         ad.delete(delId);
         resp.sendRedirect("/profile");
     }

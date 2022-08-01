@@ -43,7 +43,7 @@
         if (username == '' || email == '' || password == '' || confirm_password == '') {
             e.preventDefault();
             alert('Please fill out all fields.');
-        } else if (username == username) {
+        } else if (username == username.val) {
             alert("Sorry that username is taken");
         }
     });

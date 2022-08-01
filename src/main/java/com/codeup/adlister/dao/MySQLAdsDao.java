@@ -107,6 +107,21 @@ public class MySQLAdsDao implements Ads {
 
     }
 
+    public void deletes(long delId){
+        String sql = "DELETE FROM category_and_ads WHERE ad_id = ?";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1,delId);
+            stmt.executeUpdate();
+
+
+        }catch (SQLException e){
+            throw new RuntimeException("cant delete that idk why", e);
+
+        }
+
+    }
+
 
     public void update(long updateId, String title, String description) {
         String sql = "UPDATE ads SET title = ? , description = ? WHERE id = ?";
