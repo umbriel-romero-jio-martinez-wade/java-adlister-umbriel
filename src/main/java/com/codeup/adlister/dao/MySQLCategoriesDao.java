@@ -90,11 +90,7 @@ public class MySQLCategoriesDao implements Categories{
     }
 
     public List<Ad> getAdsWithCategory(Long num) {
-        String sql = "SELECT a.id,c.name,a.title,a.description,a.user_ID\n" +
-                "FROM ads AS a\n" +
-                "JOIN category_and_ads caa on a.id = caa.ad_id\n" +
-                "JOIN category c on caa.category_id = c.id\n" +
-                "WHERE c.id =?";
+        String sql = "SELECT a.id,c.name,a.title,a.description,a.user_ID FROM ads AS a JOIN category_and_ads caa on a.id = caa.ad_id JOIN category c on caa.category_id = c.id WHERE c.id =?";
         try {
             List<Ad> ad = new ArrayList<>();
             PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);

@@ -46,7 +46,6 @@ CREATE TABLE category_and_ads
     id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
     ad_id       INT UNSIGNED NOT NULL,
     category_id INT UNSIGNED NOT NULL,
-    ad_desc VARCHAR(255) NOT NULL,
     primary key (id),
     FOREIGN KEY (ad_id) REFERENCES ads (id),
     FOREIGN KEY (category_id) REFERENCES category (id)
